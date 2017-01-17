@@ -1,24 +1,33 @@
 # server-monitor-python
 server infrastructure monitor
 
-服务器环境：
+
+##服务器环境：
 linux
 python2.6、 python2.7
 需要安装python的redis和psutil
-命令：
+
+##命令：
 sudo easy_install redis
+
 sudo easy_install psutil
 
-如果报错：
-1、fatal error: Python.h: No such file or directory
-要安装一下python-devel
-centos:
-sudo yum install python-devel
+##如果报错：
+* 1、fatal error: Python.h: No such file or directory
 
-2、-bash: easy_install: command not found
-执行：wget https://bootstrap.pypa.io/ez_setup.py -O - | python
+   要安装一下python-devel
 
-代码目录结构：
+    centos:
+
+      sudo yum install python-devel
+
+* 2、-bash: easy_install: command not found
+
+    执行：
+      wget https://bootstrap.pypa.io/ez_setup.py -O - | python
+
+##代码目录结构：
+```
 .
 ├── logger.conf         //日志配置文件
 ├── monitor              //监控内容的目录
@@ -30,3 +39,4 @@ sudo yum install python-devel
 ├── monitor.py           //主监控执行程序
 ├── redis.conf             //redis配置文件
 └── server.conf           //本机服务器基本信息配置文件
+```
