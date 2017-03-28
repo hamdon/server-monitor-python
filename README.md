@@ -36,7 +36,10 @@ sudo easy_install psutil
 │   ├── __init__.py       //包管理文件
 │   └── memory.py     //监控内存使用情况
 ├── monitor.log          //代码执行过程产生的错误记录日志
+├── monitor_start_check.sh           //计划任务执行的shell
 ├── monitor.py           //主监控执行程序
+├── monitor_start.py           //间隔执行主监控执行程序
 ├── redis.conf             //redis配置文件
+├── common.conf             //公共配置文件
 └── server.conf           //本机服务器基本信息配置文件
 ```
