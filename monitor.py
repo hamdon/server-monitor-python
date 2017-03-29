@@ -17,12 +17,13 @@ current_dir = os.path.dirname(__file__)
 pidfile = open(os.path.realpath(__file__), "r")
 ################################################
 # logging config
-logger_conf_file = os.path.abspath(os.path.join(current_dir, "logger.conf"))
-logging.config.fileConfig(logger_conf_file)
-logger = logging.getLogger("monitor")
 monitor_log = os.path.abspath(os.path.join(current_dir, "monitor.log"))
-logger.addHandler(logging.FileHandler(monitor_log))
-
+logger = logging.getLogger()
+handler = logging.FileHandler(monitor_log)
+formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+logger.setLevel(logging.DEBUG)
 try:
 
     # 创建一个排他锁,为了避免同时操作文件，需要程序自己来检查该文件是否已经被加锁。这里如果检查到加锁了，进程会被阻塞
