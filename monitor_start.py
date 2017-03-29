@@ -6,13 +6,13 @@ import os
 import time
 
 cf = ConfigParser.ConfigParser()
-CURRENT_DIR = os.path.dirname(__file__)
+current_dir = os.path.dirname(__file__)
 ################################################
-RUN_FILE=os.path.abspath(os.path.join(CURRENT_DIR, "monitor.py"))
+run_file=os.path.abspath(os.path.join(current_dir, "monitor.py"))
 while True:
-    os.system("python "+ RUN_FILE)
+    os.system("python " + run_file)
     # common config
-    COMMON_FILE = os.path.abspath(os.path.join(CURRENT_DIR, "common.conf"))
-    cf.read(COMMON_FILE)
+    common_conf_file = os.path.abspath(os.path.join(current_dir, "common.conf"))
+    cf.read(common_conf_file)
     server_monitor_time_interval = cf.get("common", "server_monitor_time_interval")
-    time.sleep(server_monitor_time_interval)
+    time.sleep(float(server_monitor_time_interval))
