@@ -4,11 +4,14 @@ from __future__ import division
 import psutil
 class memory:
     name='memory'
+	is_send=0
     def display(self):
-      return {self.name:self.calculate()} 
+      return {self.name:self.calculate(),'is_send':self.is_send} 
     def calculate(self):
        phymem=psutil.virtual_memory()
        swapmem=psutil.swap_memory()
+	   if phymem.percent>95:
+          self.is_send=1
        return {
 		'physical':{
 			'percent':phymem.percent,

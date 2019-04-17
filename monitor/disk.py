@@ -6,16 +6,19 @@ import os
 
 class disk:
     name='disk'
+	is_send=0
     def display(self):
-        return {self.name:self.calculate()}
+        return {self.name:self.calculate(),'is_send':self.is_send}
     def calculate(self):
         parts = psutil.disk_partitions()
         partitions = []
 
         for part in parts:
             if not 'loop' in part.device:
-                usage = psutil.disk_usage(part.mountpoint)
-		inodes = os.statvfs(part.mountpoint)
+                usage = psutil.disk_usage(part.mountpoint)				
+				inodes = os.statvfs(part.mountpoint)
+				if usage.percent>90:
+                    self.is_send=1
                 partitions.append({
                    'device': part.device,
                    'mountpoint': part.mountpoint,
