@@ -4,20 +4,23 @@ from __future__ import division
 import psutil
 import os
 
+
 class disk:
-    name='disk'
-	is_send=0
+    name = 'disk'
+    is_send = 0
+
     def display(self):
-        return {self.name:self.calculate(),'is_send':self.is_send}
+        return {self.name: self.calculate(), 'is_send': self.is_send}
+
     def calculate(self):
         parts = psutil.disk_partitions()
         partitions = []
 
         for part in parts:
             if not 'loop' in part.device:
-                usage = psutil.disk_usage(part.mountpoint)				
-				inodes = os.statvfs(part.mountpoint)
-				if usage.percent>90:
+                usage = psutil.disk_usage(part.mountpoint)
+                inodes = os.statvfs(part.mountpoint)
+                if usage.percent > 90:
                     self.is_send=1
                 partitions.append({
                    'device': part.device,
@@ -27,8 +30,8 @@ class disk:
                    'free': self.size_format(usage.free),
                    'percent': usage.percent,
                    'unit':self.size_unit(usage.total),
-		   'inode_total_number':inodes.f_files,
-		   'inode_free_number':inodes.f_ffree
+           'inode_total_number':inodes.f_files,
+           'inode_free_number':inodes.f_ffree
                 })
 
         return partitions
