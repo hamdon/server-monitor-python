@@ -39,7 +39,9 @@ sudo easy_install psutil
 ├── monitor_start_check.sh           //计划任务执行的shell
 ├── monitor.py           //主监控执行程序
 ├── monitor_start.py           //间隔执行主监控执行程序
+├── LawManService.py           //执法官监控执行程序
 ├── redis.conf             //redis配置文件
+├── law_man.conf             //执法官监控配置文件
 ├── common.conf             //公共配置文件
 └── server.conf           //本机服务器基本信息配置文件
 ```
